@@ -24,4 +24,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - 2022-03-16
 
 
-[1.0.0]: -
+[1.0.0]: https://github.com/IlyaMoroz92/BYN-BANK/releases/tag/2022-03-16
