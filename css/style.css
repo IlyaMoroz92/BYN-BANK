@@ -1,0 +1,403 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    
+    margin:  0 auto;
+}
+
+.tb {
+    margin-left:  0;
+    max-width: 400px;
+}
+
+input {
+    margin: 20px;
+    cursor: pointer;
+}
+
+input:last-child {
+    margin-right: 0;
+}
+
+p {
+    margin: 15px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+select {
+    margin: 15px 15px 15px 0;
+    cursor: pointer;
+    width: 100%;
+}
+
+label {
+    display: flex;
+    align-items: center;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+table {
+    max-width: 250px;
+}
+
+td {
+    padding: 3px 5px;
+    border-bottom: 1px solid rgba(66, 133, 244, 0.4);
+    border-spacing: 0px;
+}
+
+td {
+    cursor: pointer;
+}
+
+td:hover {
+    color: #4285f4;;
+}
+
+.td1 {
+    text-align: left;
+    min-width: 120px;
+}
+
+.td2 {
+    text-align: right;
+    min-width: 180px;
+}
+
+.tables {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-clean::before {
+    margin-right: 0;
+}
+
+span {
+    padding: 0 20px;
+    margin-left: 0;
+}
+
+
+.p-clean {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.settings {
+    width: 50%
+}
+
+
+.btns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.element {
+    height: 200px;
+    background-color: rgb(247, 245, 245);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+footer {
+}
+
+
+.element {
+}
+
+.element__title {
+}
+
+.element__names {
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px auto;
+}
+
+.element__bank {
+}
+
+.element__exchange {
+}
+
+.element__rates {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.element__usd {
+}
+.usd_name {
+}
+.usd-rate {
+}
+.element__eur {
+}
+.eur_name {
+}
+.eur-rate {
+}
+.element__rub {
+}
+.rub_name {
+}
+.rub-rate {
+}
+
+
+button {
+    margin: 15px 15px 15px 0;
+    cursor: pointer;
+    font-size: 12px;
+    display: inline-block;
+    font-family: Raleway;
+    text-transform: uppercase;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: 3px;
+    color: #fcfdfe;
+    width: 130px;
+    padding: 14px 0;
+    border-radius: 5px;
+    background-color: #4285f4;
+    transition: background-color 0.35s ease 0s;
+    border: none;
+}
+
+button:hover {
+    background-color: #f0f7ff;
+    border: 2px solid #4285f4;
+    padding: 12px 0;
+    width: 130px;
+    color: #4285f4;
+}
+
+.rates {
+    cursor: pointer;
+}
+
+label {
+    cursor: pointer;
+}
+
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navi {
+    margin: 50px 10px;
+    width: 28%;
+    height: 300px;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: rgb(247, 245, 245);
+    padding-bottom: 0px;
+    -webkit-transition: 0.3s ease; 
+    -moz-transition: 0.3s ease;
+    -o-transition: 0.3s ease; 
+}
+
+.navi:hover {
+    margin: 42px 10px 0px 10px;
+    box-shadow: 0 0 10px 5px rgb(212, 212, 212);
+    transition: margin 0.4s ease 0.05s;
+}
+
+.navi__one {
+    color:#4285f4;
+    background: no-repeat  url("/img/raetes1.jpg");
+    background-size: 100% 100%;
+    opacity: 0.9;
+}
+
+.navi__two {
+    color:#e4f122;
+    background: no-repeat  url("/img/ref.jpg");
+    background-size: 100% 100%;
+    opacity: 0.9;
+}
+
+.navi__three {
+    color:#e61890
+}
+
+.year {
+    margin-right: 0
+}
+
+
+/* ---------------------------------------------------------------------------------------------------------------------------- */
+
+html, 
+body {
+    height: 100%;
+    line-height: 1;
+}
+
+#box {
+    display: none;
+}
+
+body {
+    font-family: Rubik;
+    font-size: 16px;
+    color: #616161;
+}
+
+.wrapper {
+    width: 80%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin: 0px auto;
+}
+
+.main {
+    flex: 1 1 auto;
+}
+
+
+/* ---------------------------------------------------------------- */
+.header__img {
+    width: 200px;
+}
+
+.header {
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 20;
+}
+
+.header__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 114px;
+    align-items: center;
+}
+
+.header__menu {
+}
+
+
+.header__logo {
+    z-index: 5;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-around;
+}
+
+.menu__list {
+    display: flex;
+}
+
+.menu__item {
+    margin: 0 40px 0 40px;
+    text-align: center;
+}
+
+.menu__item:last-child {
+    margin: 0 0 0 40px;
+}
+
+.menu__link {
+    font-family: Raleway;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 1.2;
+    color: rgb(83, 83, 83);
+    letter-spacing: 1px;
+
+}
+
+.menu__link:hover {
+    text-decoration: underline;
+    color: #4285f4;
+}
+
+
+.main {
+    margin-top: 30px;
+
+}
+.footer {
+}
+
+
+/*                                                                               */
+
+.icon-menu {
+    display: none;
+}
+
+
+/*                                                           BURGER*/
+
+.burger {
+    width: 30px;
+    height: 24px;
+    position: relative;
+    cursor: pointer;
+}
+
+.burger__line {
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: rgb(145, 135, 135);
+    position: absolute;
+    left: 0;
+    transition: 0.3s all linear;
+}
+.burger__line_1 {
+    top: 0;
+}
+
+.burger__line_2, .burger__line_3  {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.burger__line_4 {
+    bottom: 0;
+}
+
+.burger_active .burger__line_1, .burger_active .burger__line_4 {
+    opacity: 0;
+}
+
+.burger_active .burger__line_2 {
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.burger_active .burger__line_3 {
+    transform: translateY(-50%) rotate(-45deg);
+}
+

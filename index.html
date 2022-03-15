@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 1</title>
+    <link href="https://fonts.googleapis.com/css?family=Rubik:regular,700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway:700,800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/null.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+        </header>
+        <div class="header__container">
+            <a href="" class="header__logo">
+                <img class="header__img" src="/img/лого.jpg"  alt="Logo"  class="src">
+            </a>
+            <div class="header__menu menu">
+                <nav id='menu' class="menu__body">
+                    <ul class="menu__list">
+                        <li class="menu__item"><a id="rates"  class="menu__link rates">RATES</a></li>
+                        <li class="menu__item"><a href="" class="menu__link">REFINANCING RATE</a></li>
+                        <li class="menu__item"><a href="" class="menu__link">SUPPORT</a></li>
+                        <li class="menu__item"><a href="" class="menu__link">CONTACT US</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <main id='box' class="main" style="display: none">
+            <div class='container'>
+                    <div class="settings">
+                        <div class="select">
+                            <select  name="" id="">
+                                <option>Выберите валюту</option>
+                            </select>
+                        </div>
+                        <div class="p">
+                            <p><label for="input1">Start:</label><input class = 'input1' id='input1' type="date"  value="" name="date" id=""><label for="input2">End:</label><input class = 'input2' id='input2' type="date" name="date" id=""></p>
+                        </div>
+                        <div class="btns">
+                            <button class="week">Week</button>
+                            <button class="month">Month</button>
+                            <button class="quarter">Quarter</button>
+                            <button class="year">Year</button>
+                        </div>
+                    </div>
+                <div id="chart_div" style="width: 900px; height: 900px; display: none"></div>
+                <div class="p-clean" style = 'display: none'>
+                    <p class = "write-down">CLICK AND WRITE DOWN THE VALUES YOU NEED</p>
+                    <button class="btn-clean">CLEAN</button>
+                </div>
+                <div class="tables">
+                    <div class="tb">
+                        <table>
+                        </table>
+                    </div>
+                    <div class="tb2">
+                        <table>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div class="navigation">
+            <div class="navi__one navi" style="display: block">Rates</div>
+            <div class="navi__two navi" style="display: block">2</div>
+            <div class="navi__three navi" style="display: block">3</div>
+        </div>
+        <div class="element">
+            <div class="element__title">
+                CURRENCY RATES
+            </div>
+            <div class="element__names">
+                <p class="element__bank">NBRB</p>
+                <p class="element__exchange">Currency Converter</p>
+            </div>
+            <div class="element__rates">
+                <div class="element__usd">
+                    <span class="usd_name">USD</span>
+                    <span class="usd-rate">3</span>
+                </div>
+                <div class="element__eur">
+                    <span class="eur_name">EUR</span>
+                    <span class="eur-rate">4</span>
+                </div>
+                <div class="element__rub">
+                    <span class="rub_name">RUB</span>
+                    <span class="rub-rate">100</span>
+                </div>
+            </div>
+        </div>  
+    </div>
+    <footer>
+        FOOTER
+    </footer>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/script2.js"></script>
+</body>
+</html>
