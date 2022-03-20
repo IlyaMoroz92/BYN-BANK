@@ -5,7 +5,6 @@
 }
 
 .container {
-    
     margin:  0 auto;
 }
 
@@ -40,6 +39,11 @@ p {
     justify-content: space-between;
 }
 
+.write-down {
+    color: #4285f4;
+    font-weight: 500;
+}
+
 select {
     margin: 15px 15px 15px 0;
     cursor: pointer;
@@ -52,7 +56,6 @@ label {
 }
 
 main {
-    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -114,7 +117,6 @@ span {
 
 .board {
     width: 45%;
-
 }
 
 .two {
@@ -193,9 +195,11 @@ label {
 .navigation {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 30px;
 }
 
 .navi {
+    display: block;
     margin: 30px 10px;
     width: 350px;
     height: 300px;
@@ -206,6 +210,7 @@ label {
     -webkit-transition: 0.3s ease; 
     -moz-transition: 0.3s ease;
     -o-transition: 0.3s ease; 
+    text-align: center;
 }
 
 .navi:hover {
@@ -214,28 +219,46 @@ label {
     transition: margin 0.4s ease 0.05s;
 }
 
+.navi:hover .navi_span{
+    display: block;
+}
+
 .navi__one {
-    color:#4285f4;
-    background: no-repeat  url("/img/money.png");
-    background-size: 100% 100%;
+    color: rgb(141, 141, 141);
+    background: no-repeat  url("/img/pound-to-euro-exchange-rate-775171.jpg");
+    background-size: 100% auto;
+    background-position: 0%;
     opacity: 0.9;
 }
 
 .navi__two {
-    color:#e4f122;
-    background: no-repeat  url("/img/ref.jpg");
-    background-size: 100% 100%;
+    color: rgb(141, 141, 141);
+    background: no-repeat  url("/img/lowest-mortgage-interest-rates-home-buying-real-estate-lending-696x413.jpeg");
+    background-size: 110%;
+    background-position: 60% 50%;
     opacity: 0.9;
+    
 }
 
 .navi__three {
-    color:#e61890
+    color: rgb(141, 141, 141);
+    background: no-repeat  url("/img/convert.png");
+    background-size: 65%;
+    background-position: 50% ;
+    opacity: 0.9;
 }
 
 .year {
     margin-right: 0
 }
 
+.navi_span {
+    font-size: 20px;
+    position: relative;
+    top: 270px;
+    display: none;
+
+}
 
 /* ---------------------------------------------------------------------------------------------------------------------------- */
 
@@ -245,9 +268,6 @@ body {
     line-height: 1;
 }
 
-#box {
-    display: none;
-}
 
 body {
     font-family: Rubik;
@@ -256,7 +276,7 @@ body {
 }
 
 .wrapper {
-    width: 80%;
+    width: 85%;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -284,7 +304,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    min-height: 114px;
+    min-height: 90px;
     align-items: center;
 }
 
@@ -329,61 +349,23 @@ body {
 
 
 footer {
-    width: 80%;
-    overflow: hidden;
+    width: 100%;
+    /* overflow: hidden; */
     display: flex;
     flex-direction: column;
     margin: 0px auto;
+
 }
 
-
-/*                                                                               */
-
-.icon-menu {
-    display: none;
-}
-
-
-/*                                                           BURGER*/
-
-.burger {
-    width: 30px;
-    height: 24px;
-    position: relative;
-    cursor: pointer;
-}
-
-.burger__line {
-    display: block;
+.choose-period {
     width: 100%;
-    height: 4px;
-    background-color: rgb(145, 135, 135);
-    position: absolute;
-    left: 0;
-    transition: 0.3s all linear;
-}
-.burger__line_1 {
-    top: 0;
+    font-size: 17px;
+    margin-bottom: 31px;
 }
 
-.burger__line_2, .burger__line_3  {
-    top: 50%;
-    transform: translateY(-50%);
-}
+/*                                                                             CONVERTER*/
 
-.burger__line_4 {
-    bottom: 0;
-}
 
-.burger_active .burger__line_1, .burger_active .burger__line_4 {
-    opacity: 0;
+.select_converter {
+    width: 35%;
 }
-
-.burger_active .burger__line_2 {
-    transform: translateY(-50%) rotate(45deg);
-}
-
-.burger_active .burger__line_3 {
-    transform: translateY(-50%) rotate(-45deg);
-}
-

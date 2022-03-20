@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project 1</title>
+    <title>BYN BANK</title>
+    <link rel="shortcut icon" href="/img/fav.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Rubik:regular,500, 600, 700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Raleway:500, 600, 700,800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/css/null.css">
@@ -13,73 +14,34 @@
 <body>
     <div class="wrapper">
         <header class="header">
+            <div class="header__container">
+                <a href="/index.html" class="header__logo">
+                    <img class="header__img" src="/img/лого.jpg"  alt="Logo"  class="src">
+                </a>
+                <div class="header__menu menu">
+                    <nav id='menu' class="menu__body">
+                        <ul class="menu__list">
+                            <li class="menu__item"><a id="rates" href="/html/rates.html" class="menu__link rates">RATES</a></li>
+                            <li class="menu__item"><a href="/html/refinancing-rate.html" class="menu__link">REFINANCING RATE</a></li>
+                            <li class="menu__item"><a href="/html/converter.html" class="menu__link">CURRENCY CONVERTER</a></li>
+                            <li class="menu__item"><a href="/html/about.html" class="menu__link">ABOUT</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
         </header>
-        <div class="header__container">
-            <a href="" class="header__logo">
-                <img class="header__img" src="/img/лого.jpg"  alt="Logo"  class="src">
-            </a>
-            <div class="header__menu menu">
-                <nav id='menu' class="menu__body">
-                    <ul class="menu__list">
-                        <li class="menu__item"><a id="rates"  class="menu__link rates">RATES</a></li>
-                        <li class="menu__item"><a href="" class="menu__link">REFINANCING RATE</a></li>
-                        <li class="menu__item"><a href="" class="menu__link">SUPPORT</a></li>
-                        <li class="menu__item"><a href="" class="menu__link">CONTACT US</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        <main id='box' class="main" style="display: none">
-            <div class='container'>
-                <div class="two">
-                    <div class="settings">
-                        <div class="select">
-                            <select  name="" id="">
-                                <option>Pick currency</option>
-                            </select>
-                        </div>
-                        <div class="p">
-                            <p><label for="input1">Start:</label><input class = 'input1' id='input1' type="date"  value="" name="date" id=""><label for="input2">End:</label><input class = 'input2' id='input2' type="date" name="date" id=""></p>
-                        </div>
-                        <div class="btns">
-                            <button class="week">Week</button>
-                            <button class="month">Month</button>
-                            <button class="quarter">Quarter</button>
-                            <button class="year">Year</button>
-                        </div>
-                    </div>
-                    <div class="board">
-                        <element-one></element-one>
-                    </div>        
-                </div>
-                <div id="chart_div" style="width: 900px; height: 900px; display: none"></div>
-                <div class="p-clean" style = 'display: none'>
-                    <p class = "write-down">CLICK AND WRITE DOWN THE VALUES YOU NEED</p>
-                    <button class="btn-clean">CLEAN</button>
-                </div>
-                <div class="tables">
-                    <div class="tb">
-                        <table>
-                        </table>
-                    </div>
-                    <div class="tb2">
-                        <table>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </main>
         <div class="navigation">
-            <div class="navi__one navi" style="display: block">Rates</div>
-            <div class="navi__two navi" style="display: block">2</div>
-            <div class="navi__three navi" style="display: block">3</div>
+            <a href="/html/rates.html" class="navi__one navi" style="display: block"><span class = 'navi_span'>Rates</span></a>
+            <a href="/html/refinancing-rate.html" class="navi__two navi" style="display: block"><span class = 'navi_span'>Refinancing rate</span></a>
+            <a href="/html/converter.html" class="navi__three navi" style="display: block"><span class = 'navi_span'>Currency converter</span></a>
         </div>
+        <footer >
+            <element-one></element-one>
+        </footer>
     </div>
-    <footer style = 'display: flex'>
-        <element-one></element-one>
-    </footer>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
-    <script src="/js/script.js"></script>
+    <!-- <script src="/js/script.js"></script> -->
+    <script src="/js/element.js"></script>
 </body>
 </html>

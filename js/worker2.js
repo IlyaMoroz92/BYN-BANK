@@ -1,5 +1,6 @@
 
 
+
     function getRate(id, dataStart, dataEnd){
         fetch(`https://www.nbrb.by/api/exrates/rates/dynamics/${id}?startdate=${dataStart}&enddate=${dataEnd}`)
         .then(response => response.json())

@@ -20,19 +20,17 @@ input2.addEventListener('change', input)
 
 const chartDiv = document.getElementById('chart_div')
 
-let mainResult;
-
-function input() {
-    if(input1.value&&input2.value&&select.value !== 'Pick currency') {
-        workerTwo(select.value, input1.value, input2.value)
-    }
-}
-
 function period(n, m) {
     const before = dayjs().add(n, m).format('YYYY-MM-DD')
     input1.value = before;
     input2.value = today;
     input()
+}
+
+function input() {
+    if(input1.value&&input2.value&&select.value !== 'Pick currency') {
+        workerTwo(select.value, input1.value, input2.value)
+    }
 }
 
 const worker = new Worker('/js/worker.js')
@@ -66,22 +64,23 @@ const mapping = {
         option.value = el.Cur_ID;
         select.append(option);}
         })
-        mainResult = result
     }
 }
 
 select.addEventListener('change', () => {
     deleteTr()
-    const el = result.filter((el) => {
-        return el.Cur_ID == select.value
-    })[0];
-    input1.min = el.Cur_DateStart.slice(0,10)
-    input1.max = el.Cur_DateEnd.slice(0,10)
-    input2.min = el.Cur_DateStart.slice(0,10)
-    input2.max = el.Cur_DateEnd.slice(0,10)
-    count = el.Cur_Scale
-    abb = el.Cur_Abbreviation
-    workerTwo(el.Cur_ID, el.Cur_DateStart, el.Cur_DateEnd)
+    if(select.value !== 'Pick currency') {
+        const el = result.filter((el) => {
+            return el.Cur_ID == select.value
+        })[0];
+        input1.min = el.Cur_DateStart.slice(0,10)
+        input1.max = el.Cur_DateEnd.slice(0,10)
+        input2.min = el.Cur_DateStart.slice(0,10)
+        input2.max = el.Cur_DateEnd.slice(0,10)
+        count = el.Cur_Scale
+        abb = el.Cur_Abbreviation
+        workerTwo(el.Cur_ID, el.Cur_DateStart, el.Cur_DateEnd)
+    }
 })
 
 
@@ -109,6 +108,7 @@ const div = document.querySelector('.tb');
 
 function workerData(el) {
     let rateArr = el;
+    div.style.display = 'block';
     if(rateArr.length === 0) {
         div.innerHTML = "API doesn't provide data";
         chartDiv.innerHTML = '';
@@ -174,8 +174,10 @@ function drawBackgroundColor() {
 const div2 = document.querySelector('.tb2');
 
 div.addEventListener('click', (event) => {
+    if(div.textContent !== "API doesn't provide data") {
     let dupNode = event.target.closest('table').cloneNode(true)
     div2.appendChild(dupNode);
+    }
 })
 
 
@@ -184,207 +186,6 @@ btnClean.addEventListener('click', () => {
     div2.textContent = ''
 })
 
-/* ------------------------------------------------------------ */
 
 
 
-let rates = document.getElementById('rates')
-rates.addEventListener('click', showRates)
-
-const navi1 = document.querySelector('.navi__one')
-navi1.addEventListener('click', showRates)
-
-const navi2 = document.querySelector('.navi__two').style.display
-const navi3 = document.querySelector('.navi__three').style.display
-
-
-function showRates() {
-    document.querySelector('.navi__one').style.display = 'none'
-    document.querySelector('.navi__two').style.display = 'none'
-    document.querySelector('.navi__three').style.display = 'none'
-    document.querySelector('footer').style.display = 'none'
-    let display = document.getElementById('box').style.display
-    if(display==='none') {
-        document.getElementById('box').style.display = 'block' 
-        } else {
-            document.getElementById('box').style.display = 'none' 
-    }
-}
-
-
-/* --------------------------------------------------- */   // ELEMENT
-const yesterday = dayjs().subtract(1, 'day').format('YYYY-MM-DD');
-
-
-class Elementone extends HTMLElement { 
-
-    constructor () {
-        super();
-        const shadow = this.attachShadow({mode: 'open'});
-        
-        function getKurs() {
-
-        fetch(`https://www.nbrb.by/api/exrates/rates/dynamics/451?startdate=${yesterday}&enddate=${today}`)
-        .then((response) => response.json()) 
-        .then(function aaa(json) {  
-        for(let i=0; i<json.length; i++) {
-        createTr(`${json[i].Date.slice(0,10)}: 1 EUR `, `${json[i].Cur_OfficialRate} BYN`)
-        }
-        })
-
-        fetch(`https://www.nbrb.by/api/exrates/rates/dynamics/431?startdate=${yesterday}&enddate=${today}`)
-        .then((response) => response.json()) 
-        .then(function aaa(json) {  
-        for( let j=0; j<json.length; j++) {
-        createTr(`${json[j].Date.slice(0,10)}: 1 USD `, `${json[j].Cur_OfficialRate} BYN`)
-        }
-        })
-
-        fetch(`https://www.nbrb.by/api/exrates/rates/dynamics/456?startdate=${yesterday}&enddate=${today}`)
-        .then((response) => response.json()) 
-        .then(function aaa(json) {  
-        for( let j=0; j<json.length; j++) {
-        createTr(`${json[j].Date.slice(0,10)}: 100 RUS `, `${json[j].Cur_OfficialRate} BYN`)
-        }
-        })
-    }
-    
-        const divElement = document.createElement('div')
-        divElement.className = 'element'
-
-        const divElementTitle = document.createElement('div')
-        divElementTitle.className = 'element__title'
-        divElementTitle.innerHTML = 'CURRENCY TODAY'
-
-        const divElementNames = document.createElement('div')
-        divElementNames.className = 'element__names'
-
-        const pElementBank = document.createElement('p')
-        pElementBank.className = 'element__bank'
-        pElementBank.innerHTML = 'NBRB'
-
-        const pElementExchange = document.createElement('p')
-        pElementExchange.className = 'element__exchange'
-        pElementExchange.innerHTML = 'Currency Converter'
-
-        divElementNames.appendChild(pElementBank)
-        divElementNames.appendChild(pElementExchange)
-
-        const divElementRates = document.createElement('div')
-        divElementRates.className = 'element__rates'
-
-        const divElementUsd = document.createElement('div')
-        divElementUsd.className = 'element__usd'
-        const spanUsdName = document.createElement('span')
-        spanUsdName.className = 'usd_name'
-        const spanUsdRate = document.createElement('span')
-        spanUsdRate.className = 'usd_rate, blue_span'
-
-        const divElementEur = document.createElement('div')
-        divElementEur.className = 'element__eur'
-        const spanEurName = document.createElement('span')
-        spanEurName.className = 'eur_name'
-        const spanEurRate = document.createElement('span')
-        spanEurRate.className = 'eur_rate, blue_span'
-
-        const divElementRub = document.createElement('div')
-        divElementRub.className = 'element__rub'
-        const spanRubName = document.createElement('span')
-        spanRubName.className = 'rub_name'
-        const spanRubRate = document.createElement('span')
-        spanRubRate.className = 'rub_rate, blue_span'
-
-        fetch('https://www.nbrb.by/api/exrates/rates/431')
-        .then((response) => response.json())
-        .then((data) => {
-            spanUsdName.innerHTML = data.Cur_Scale + ' ' + data.Cur_Abbreviation
-            spanUsdRate.innerHTML = data.Cur_OfficialRate;
-        })
-
-        fetch('https://www.nbrb.by/api/exrates/rates/451')
-        .then((response) => response.json())
-        .then((data) => {
-            spanEurName.innerHTML = data.Cur_Scale + ' ' + data.Cur_Abbreviation
-            spanEurRate.innerHTML = data.Cur_OfficialRate;
-        })
-
-        fetch('https://www.nbrb.by/api/exrates/rates/456')
-        .then((response) => response.json())
-        .then((data) => {
-            spanRubName.innerHTML = data.Cur_Scale + ' ' + data.Cur_Abbreviation
-            spanRubRate.innerHTML = data.Cur_OfficialRate;
-        })
-
-        divElementUsd.appendChild(spanUsdName)
-        divElementUsd.appendChild(spanUsdRate)
-
-        divElementEur.appendChild(spanEurName)
-        divElementEur.appendChild(spanEurRate)
-    
-        divElementRub.appendChild(spanRubName)
-        divElementRub.appendChild(spanRubRate)
-
-        divElementRates.appendChild(divElementUsd)
-        divElementRates.appendChild(divElementEur)
-        divElementRates.appendChild(divElementRub)
-
-        divElement.appendChild(divElementTitle)
-        divElement.appendChild(divElementNames)
-        divElement.appendChild(divElementRates)
-
-        const style = document.createElement('style');
-
-        style.textContent = `
-            span {
-                padding-right: 10px;
-            }
-
-            .element{
-                margin-top: 10px;
-                padding: 40px 0;
-                width: 100%;
-                height 100%;
-                background-color: rgb(247, 245, 245);
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-            }
-
-            .element__names {
-                background-color: rgb(247, 245, 245);
-                width: 60%;
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                margin: 20px auto;
-                font-size: 15px;
-            }
-
-            .element__rates {
-                width: 90%;
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                font-size: 15px;
-            }
-
-            .blue_span {
-                color: #4285f4;
-                font-weight: bold;
-            }
-            
-            .blue_span::after {
-                content: ' BYN';
-                color: #616161;
-                font-weight: 400;
-            }
-                
-
-        `
-        shadow.appendChild(style)
-        shadow.appendChild(divElement)
-    }
-    }
-
-    customElements.define("element-one", Elementone);
