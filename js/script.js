@@ -85,25 +85,29 @@ select.addEventListener('change', () => {
 
 
 
-worker.addEventListener('message', ({data}) => {
-    mapping[data.msg](data.payload);
-});
 
-const worker2 = new Worker('/js/worker2.js')
+
 
 function workerTwo(idCur, start, end) {
     deleteTr()
-    worker2.postMessage({
+    let arrWorker = {
         id: idCur,
         dataStart: start,
         dataEnd: end
+    }
+    worker.postMessage({
+        msg: 'dynamics',
+        arrWorker
     });
 }
 
-worker2.addEventListener('message', ({data}) => {
-    workerData({data}.data)
+worker.addEventListener('message', ({data}) => {
+    if(data.dynam){
+        workerData(data.dynam)
+        return
+    }
+    mapping[data.msg](data.payload);
 })
-
 const div = document.querySelector('.tb');
 
 function workerData(el) {
@@ -115,9 +119,11 @@ function workerData(el) {
         div.style.color = 'red';
     } else {
     div.style.color = 'inherit'
-    rateArr.forEach((json) => {
+
+    rateArr.forEach((json) => {    
     createTr(`${json.Date.slice(0,10)} `, ` ${count} ` + ` ${abb} ` + `  ${json.Cur_OfficialRate}  ` + ` BYN`)
     })
+
     arrCurs = [];
     rateArr.forEach(el => arrCurs.push([new Date(el.Date), el.Cur_OfficialRate]))
     createChart()
