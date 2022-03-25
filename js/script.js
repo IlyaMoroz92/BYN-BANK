@@ -20,6 +20,19 @@ input2.addEventListener('change', input)
 
 const chartDiv = document.getElementById('chart_div')
 
+
+const popup = document.getElementById('popup')
+const popupClose = document.getElementById('popup_close')
+
+window.addEventListener('click', function(e) {
+    if(e.target== popup) {
+        popup.classList.remove('active')}
+})
+
+popupClose.addEventListener('click', () => {
+    popup.classList.remove('active');
+})
+
 function period(n, m) {
     const before = dayjs().add(n, m).format('YYYY-MM-DD')
     input1.value = before;
@@ -30,6 +43,8 @@ function period(n, m) {
 function input() {
     if(input1.value&&input2.value&&select.value !== 'Pick currency') {
         workerTwo(select.value, input1.value, input2.value)
+    } else {
+        popup.classList.add('active')
     }
 }
 
@@ -191,6 +206,7 @@ const btnClean = document.querySelector('.btn-clean')
 btnClean.addEventListener('click', () => {
     div2.textContent = ''
 })
+
 
 
 

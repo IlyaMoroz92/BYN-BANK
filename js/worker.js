@@ -24,7 +24,6 @@ fetch('https://www.nbrb.by/api/exrates/currencies')
         .then((data) => {
             postMessage({dynam: data})
         })
-        
     }
     
     function sendRate(data) {
