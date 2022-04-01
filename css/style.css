@@ -33,11 +33,12 @@ input:last-child {
     margin-right: 0;
 }
 
-p {
+.p_rates, .p_ref {
     margin: 15px 0;
     display: flex;
     justify-content: space-between;
 }
+
 
 .write-down {
     color: #4285f4;
@@ -45,9 +46,13 @@ p {
 }
 
 select {
-    margin: 15px 15px 15px 0;
+    margin: 0px 15px 15px 0;
     cursor: pointer;
     width: 100%;
+}
+
+.select {
+    margin: 15px 15px 15px 0;
 }
 
 label {
@@ -109,6 +114,7 @@ span {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 20px 0;
 }
 
 .settings {
@@ -195,7 +201,7 @@ label {
 .navigation {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 30px;
+    margin-top: 30px;
 }
 
 .navi {
@@ -207,9 +213,6 @@ label {
     cursor: pointer;
     background-color: rgb(247, 245, 245);
     padding-bottom: 0px;
-    -webkit-transition: 0.3s ease; 
-    -moz-transition: 0.3s ease;
-    -o-transition: 0.3s ease; 
     text-align: center;
 }
 
@@ -262,9 +265,11 @@ label {
 
 /* ---------------------------------------------------------------------------------------------------------------------------- */
 
-html, 
+ 
 body {
-    height: 100%;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
     line-height: 1;
 }
 
@@ -276,6 +281,7 @@ body {
 }
 
 .wrapper {
+    flex: 1 1 auto;
     width: 85%;
     overflow: hidden;
     display: flex;
@@ -347,15 +353,6 @@ body {
     color: #4285f4;
 }
 
-
-footer {
-    width: 100%;
-    /* overflow: hidden; */
-    display: flex;
-    flex-direction: column;
-    margin: 0px auto;
-
-}
 
 .choose-period {
     width: 100%;
@@ -436,4 +433,20 @@ footer {
 .popup.active {
     background-color: rgba(0, 0, 0, 0.8);
     transform: translateY(0%) scale(100%);
+}
+
+.popup_text {
+    display: block;
+    text-align: center;
+}
+
+/* ---------------------------------------------------- */
+
+.btns_save {
+    display: flex;
+
+}
+
+.save {
+    margin: 0 20px;
 }

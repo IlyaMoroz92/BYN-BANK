@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:500, 600, 700,800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/css/null.css">
     <link rel="stylesheet" href="/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 </head>
 <body>
     <div class="wrapper">
@@ -38,7 +39,7 @@
                             </select>
                         </div>
                         <div class="p">
-                            <p><label for="input1">Start:</label><input class = 'input1' id='input1' type="date"  value="" name="date" id=""><label for="input2">End:</label><input class = 'input2' id='input2' type="date" name="date" id=""></p>
+                            <p class="p_rates"><label for="input1">Start:</label><input class = 'input1' id='input1' type="date"  value="" name="date" id=""><label for="input2">End:</label><input class = 'input2' id='input2' type="date" name="date" id=""></p>
                         </div>
                         <div class="btns">
                             <button class="week">Week</button>
@@ -52,14 +53,17 @@
                     </div>
                 </div>
                 <div id="chart_div" style="width: 900px; height: 900px; display: none;"></div>
-                <div class="p-clean" style="display: none;">
+                <div class="p-clean" style="display: none">
                     <p class = "write-down">CLICK AND WRITE DOWN THE VALUES YOU NEED</p>
-                    <button class="btn-clean">CLEAN</button>
                 </div>
                 <div class="tables">
                     <div style="display: none" class="tb">
                         <table>
                         </table>
+                    </div>
+                    <div class="btns_save" style="display: none">
+                        <div class="btn-left"><button class="save_left save">&#9668 Download</button></div>
+                        <div class="btn-right"><button class="save_right save btn-clean">Clean &#9658</button></div>
                     </div>
                     <div class="tb2">
                         <table>
@@ -72,7 +76,7 @@
     <div class="popup" id="popup">
         <div class="popup_container">
             <div class="popup_body">
-                <p class="popup_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, optio!</p>
+                <p class="popup_text">You need to choose currency</p>
                 <div class="popup_close" id="popup_close">&#10006</div>
             </div>
         </div>

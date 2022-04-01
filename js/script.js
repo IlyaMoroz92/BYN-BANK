@@ -1,5 +1,8 @@
 const today = dayjs().format('YYYY-MM-DD');
 
+let abbCur;
+let arrSave = [];
+
 const input1 = document.querySelector('.input1')
 const input2 = document.querySelector('.input2')
 const select = document.querySelector('select')
@@ -13,7 +16,6 @@ week.addEventListener('click', () => period(-1, `week`))
 month.addEventListener('click', () => period(-1, `month`))
 quarter.addEventListener('click', () => period(-3, `month`))
 year.addEventListener('click', () => period(-1, `year`))
-select.addEventListener('change', deleteTr)
 
 input1.addEventListener('change', input)
 input2.addEventListener('change', input)
@@ -23,6 +25,7 @@ const chartDiv = document.getElementById('chart_div')
 
 const popup = document.getElementById('popup')
 const popupClose = document.getElementById('popup_close')
+
 
 window.addEventListener('click', function(e) {
     if(e.target== popup) {
@@ -92,16 +95,13 @@ select.addEventListener('change', () => {
         input1.max = el.Cur_DateEnd.slice(0,10)
         input2.min = el.Cur_DateStart.slice(0,10)
         input2.max = el.Cur_DateEnd.slice(0,10)
+        input1.value = el.Cur_DateStart.slice(0,10)
         count = el.Cur_Scale
         abb = el.Cur_Abbreviation
+        abbCur = el.Cur_Name_Eng
         workerTwo(el.Cur_ID, el.Cur_DateStart, el.Cur_DateEnd)
     }
 })
-
-
-
-
-
 
 function workerTwo(idCur, start, end) {
     deleteTr()
@@ -124,23 +124,30 @@ worker.addEventListener('message', ({data}) => {
     mapping[data.msg](data.payload);
 })
 const div = document.querySelector('.tb');
+const save = document.querySelector('.btns_save')
 
 function workerData(el) {
     let rateArr = el;
+    arrSave = [];
     div.style.display = 'block';
+    
     if(rateArr.length === 0) {
+        saveLeft.style.display = 'none';
         div.innerHTML = "API doesn't provide data";
         chartDiv.innerHTML = '';
         div.style.color = 'red';
     } else {
+    saveLeft.style.display = 'inherit';
+    save.style.display = 'inherit';
     div.style.color = 'inherit'
 
     rateArr.forEach((json) => {    
-    createTr(`${json.Date.slice(0,10)} `, ` ${count} ` + ` ${abb} ` + `  ${json.Cur_OfficialRate}  ` + ` BYN`)
+    createTr(`${json.Date.slice(0,10)} `, ` ${count} ` + `${abb}` + `  ${json.Cur_OfficialRate}  ` + ` BYN`)
     })
-
     arrCurs = [];
     rateArr.forEach(el => arrCurs.push([new Date(el.Date), el.Cur_OfficialRate]))
+    rateArr.forEach(el => arrSave.push(['\n' + new Date(el.Date).toLocaleDateString() + ` ${count} ` + `${abb} `  + el.Cur_OfficialRate + ' BYN']))
+    arrSave = arrSave.flat()
     createChart()
     }
 }
@@ -162,7 +169,6 @@ function createTr (el1, el2) {
 }
 
 function deleteTr() {
-    const div = document.querySelector('.tb');
     div.textContent = '';
 }
 
@@ -201,13 +207,19 @@ div.addEventListener('click', (event) => {
     }
 })
 
-
 const btnClean = document.querySelector('.btn-clean')
 btnClean.addEventListener('click', () => {
     div2.textContent = ''
 })
 
-
-
+const saveLeft = document.querySelector('.save_left')
+saveLeft.addEventListener('click', function(file) {
+    file = new File(
+        [`${arrSave}`],
+        `${abbCur}` + ' ' + `${arrSave[0].slice(1,11)}` +  ' - ' + `${arrSave[arrSave.length - 1].slice(1,11)}` + '.txt',
+        {type: 'text/plain;charset=utf8'}
+    );
+    saveAs(file)
+})
 
 
